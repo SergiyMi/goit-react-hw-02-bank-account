@@ -1,0 +1,23 @@
+.controls {
+  background-color: indigo;
+  height: 100px;
+}
+
+input {
+  height: 30px;
+  border: none;
+  border-radius: 5%;
+  padding: 0;
+}
+
+button {
+  height: 30px;
+  width: 80px;
+  margin-left: 20px;
+  margin-top: 30px;
+  color: white;
+  background: blue;
+  border: none;
+  border-radius: 5%;
+  padding: 0;
+}

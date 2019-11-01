@@ -1,0 +1,20 @@
+.history {
+  margin: 0, auto;
+  text-align: center;
+}
+
+table {
+  text-align: center;
+  margin: auto;
+  width: 450px;
+}
+
+th {
+  background-color: lightgray;
+  color: black;
+  text-transform: uppercase;
+}
+
+td {
+  color: gray;
+}
