@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/SergiyMi/goit-react-hw-02-bank-account/static/css/main.ddc45a57.chunk.css",
-    "main.js": "/SergiyMi/goit-react-hw-02-bank-account/static/js/main.4ef26e06.chunk.js",
-    "main.js.map": "/SergiyMi/goit-react-hw-02-bank-account/static/js/main.4ef26e06.chunk.js.map",
-    "runtime-main.js": "/SergiyMi/goit-react-hw-02-bank-account/static/js/runtime-main.c2e90218.js",
-    "runtime-main.js.map": "/SergiyMi/goit-react-hw-02-bank-account/static/js/runtime-main.c2e90218.js.map",
-    "static/js/2.6711bee4.chunk.js": "/SergiyMi/goit-react-hw-02-bank-account/static/js/2.6711bee4.chunk.js",
-    "static/js/2.6711bee4.chunk.js.map": "/SergiyMi/goit-react-hw-02-bank-account/static/js/2.6711bee4.chunk.js.map",
-    "index.html": "/SergiyMi/goit-react-hw-02-bank-account/index.html",
-    "precache-manifest.a15e8eb263fd40546c33f45bfe379c6d.js": "/SergiyMi/goit-react-hw-02-bank-account/precache-manifest.a15e8eb263fd40546c33f45bfe379c6d.js",
-    "service-worker.js": "/SergiyMi/goit-react-hw-02-bank-account/service-worker.js",
-    "static/css/main.ddc45a57.chunk.css.map": "/SergiyMi/goit-react-hw-02-bank-account/static/css/main.ddc45a57.chunk.css.map"
+    "main.css": "/goit-react-hw-02-bank-account/static/css/main.ddc45a57.chunk.css",
+    "main.js": "/goit-react-hw-02-bank-account/static/js/main.4ef26e06.chunk.js",
+    "main.js.map": "/goit-react-hw-02-bank-account/static/js/main.4ef26e06.chunk.js.map",
+    "runtime-main.js": "/goit-react-hw-02-bank-account/static/js/runtime-main.4f057b57.js",
+    "runtime-main.js.map": "/goit-react-hw-02-bank-account/static/js/runtime-main.4f057b57.js.map",
+    "static/js/2.6711bee4.chunk.js": "/goit-react-hw-02-bank-account/static/js/2.6711bee4.chunk.js",
+    "static/js/2.6711bee4.chunk.js.map": "/goit-react-hw-02-bank-account/static/js/2.6711bee4.chunk.js.map",
+    "index.html": "/goit-react-hw-02-bank-account/index.html",
+    "precache-manifest.7aa0b51e0afe9500228af14f8177a4e2.js": "/goit-react-hw-02-bank-account/precache-manifest.7aa0b51e0afe9500228af14f8177a4e2.js",
+    "service-worker.js": "/goit-react-hw-02-bank-account/service-worker.js",
+    "static/css/main.ddc45a57.chunk.css.map": "/goit-react-hw-02-bank-account/static/css/main.ddc45a57.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.c2e90218.js",
+    "static/js/runtime-main.4f057b57.js",
     "static/js/2.6711bee4.chunk.js",
     "static/css/main.ddc45a57.chunk.css",
     "static/js/main.4ef26e06.chunk.js"
