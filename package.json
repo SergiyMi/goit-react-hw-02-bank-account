@@ -17,7 +17,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://github.com/SergiyMi/goit-react-hw-02-bank-account",
+  "homepage": "https://SergiyMi.github.io/goit-react-hw-02-bank-account",
   "eslintConfig": {
     "extends": "react-app"
   },
