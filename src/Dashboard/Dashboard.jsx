@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import T from 'prop-types';
 import shortid from 'shortid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import styles from './Dashboard.module.css';
 import Controls from '../Controls/Controls';
@@ -35,6 +37,14 @@ export default class Dashboard extends Component {
         date: new Date().toLocaleString()
     }
 
+    notifyInvalid = () => toast(this.props.messageInvalidAmount, {
+        position: toast.POSITION.TOP_CENTER
+      });
+
+    notifyNotEnough = () => toast(this.props.messageNotEnoughMoney, {
+        position: toast.POSITION.TOP_CENTER
+    });  
+
     handleInputText = (e) => {
         this.setState(
             {
@@ -64,7 +74,7 @@ export default class Dashboard extends Component {
                 )          
                 })) 
             : 
-                alert(this.props.messageInvalidAmount)
+                this.notifyInvalid()
         )         
     }
 
@@ -88,7 +98,7 @@ export default class Dashboard extends Component {
                 )            
                 }))
             :
-                alert(this.props.messageNotEnoughMoney) 
+                this.notifyNotEnough() 
         )
     }
 
@@ -105,6 +115,7 @@ export default class Dashboard extends Component {
             balance={this.state.balance}
             />
             <TransactionHistory items={this.state.transactions}/>
+            <ToastContainer/>
         </div>
         )
     }
