@@ -50,13 +50,21 @@ export default class Dashboard extends Component {
             {
                 inputAmount: e.currentTarget.value
             }
+        );
+    }
+
+    reset = () => {
+        this.setState(
+            {
+                inputAmount: ''
+            }
         )
     }
 
     handleDeposit = () => {
         return (
             this.state.inputAmount > 0 ? 
-            this.setState((prevState) => ({
+            (this.setState((prevState) => ({
                 balance: (
                     this.state.balance = 
                     prevState.balance + Number.parseInt(this.state.inputAmount)
@@ -72,16 +80,27 @@ export default class Dashboard extends Component {
                         }
                     ]
                 )          
-                })) 
+                })),
+                this.reset() 
+            )
             : 
-                this.notifyInvalid()
+                (
+                    this.reset(),
+                    this.notifyInvalid()
+                )
         )         
     }
 
     handleWithdraw = () => {
         return (
-            ((this.state.inputAmount > 0) && (this.state.inputAmount < this.state.balance)) ?
-            this.setState((prevState) => ({
+            this.state.inputAmount === '0' ? 
+                (
+                    this.notifyInvalid(),
+                    this.reset()
+                )
+            :
+            (((this.state.inputAmount >= 0) && (this.state.inputAmount <= this.state.balance)) ?
+            (this.setState((prevState) => ({
                 balance: (
                     this.state.balance = prevState.balance - Number.parseInt(this.state.inputAmount)
                 ),
@@ -96,9 +115,14 @@ export default class Dashboard extends Component {
                         }
                     ]
                 )            
-                }))
-            :
-                this.notifyNotEnough() 
+                })),
+                this.reset()
+            )
+                :
+                    (this.notifyNotEnough(),
+                    this.reset()
+                    ) 
+            )
         )
     }
 
