@@ -93,7 +93,7 @@ export default class Dashboard extends Component {
 
     handleWithdraw = () => {
         return (
-            ((this.state.inputAmount === '0') || (this.state.inputAmount === '')) ? 
+            ((this.state.inputAmount === '0') || (this.state.inputAmount === '') || (this.state.inputAmount < 0)) ? 
                 (
                     this.notifyInvalid(),
                     this.reset()
