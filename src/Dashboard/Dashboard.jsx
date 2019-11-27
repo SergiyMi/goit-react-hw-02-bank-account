@@ -32,22 +32,18 @@ export default class Dashboard extends Component {
   state = {
     transactions: [],
     balance: 0,
-    income: 0,
-    expenses: 0,
   };
 
-  inOut = (transactions, num) => {
-    console.log(num);
-    num === 'income'
-      ? (this.income = transactions.reduce((acc, transaction) => {
-          acc = acc + transaction.amount;
-          return acc;
-        }, 0))
-      : (this.expenses = transactions.reduce((acc, transaction) => {
-          acc = acc + transaction.amount;
-          return acc;
-        }, 0));
-    return num;
+  Money = transacs => {
+    return transacs.reduce(
+      (acc, transaction) => {
+        return {
+          ...acc,
+          [transaction.type]: transaction.amount + acc[transaction.type],
+        };
+      },
+      { deposit: 0, withdraw: 0 },
+    );
   };
 
   notifyInvalid = () =>
@@ -73,27 +69,18 @@ export default class Dashboard extends Component {
   };
 
   handleDepositWithdraw = ({ target: { name } }) => {
+    const { inputAmount } = this.state;
     this.setState(prevState => ({
       balance:
         name === 'deposit'
-          ? prevState.balance + Number.parseInt(this.state.inputAmount)
-          : prevState.balance - Number.parseInt(this.state.inputAmount),
-
-      income:
-        name === 'deposit'
-          ? prevState.income + Number.parseInt(this.state.inputAmount)
-          : prevState.income,
-
-      expenses:
-        name === 'withdraw'
-          ? prevState.expenses + Number.parseInt(this.state.inputAmount)
-          : prevState.expenses,
+          ? prevState.balance + Number.parseInt(inputAmount)
+          : prevState.balance - Number.parseInt(inputAmount),
 
       transactions: (this.state.transactions = [
         ...this.state.transactions,
         {
           type: name,
-          amount: Number.parseInt(this.state.inputAmount),
+          amount: Number.parseInt(inputAmount),
           date: new Date().toLocaleString(),
           id: shortid.generate(),
         },
@@ -109,32 +96,32 @@ export default class Dashboard extends Component {
   };
 
   handleWithdraw = ({ target: { name } }) => {
-    return this.state.inputAmount === '0' ||
-      this.state.inputAmount === '' ||
-      this.state.inputAmount < 0
+    const { inputAmount, balance } = this.state;
+    return inputAmount === '0' || inputAmount === '' || inputAmount < 0
       ? (this.notifyInvalid(), this.reset())
-      : this.state.inputAmount >= 0 &&
-        this.state.inputAmount <= this.state.balance
+      : inputAmount >= 0 && inputAmount <= balance
       ? this.handleDepositWithdraw({ target: { name } })
       : (this.notifyNotEnough(), this.reset());
   };
 
   render() {
+    const depWit = this.Money(this.state.transactions);
+    const { inputAmount, transactions, balance } = this.state;
     return (
       <div className={styles.dashboard}>
         <Controls
-          inputAmount={this.state.inputAmount}
+          inputAmount={inputAmount}
           onChangeInput={this.handleInputText}
           onDeposit={this.handleDeposit}
           onWithdraw={this.handleWithdraw}
         />
         <Balance
-          transactions={this.state.transactions}
-          balance={this.state.balance}
-          income={this.state.income}
-          expenses={this.state.expenses}
+          transactions={transactions}
+          balance={balance}
+          income={depWit !== undefined ? depWit.deposit : '0'}
+          expenses={depWit !== undefined ? depWit.withdraw : '0'}
         />
-        <TransactionHistory items={this.state.transactions} />
+        <TransactionHistory items={transactions} />
         <ToastContainer />
       </div>
     );
